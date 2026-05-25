@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fast Food</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+}
+
+header{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1920") center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.overlay{
+background:rgba(0,0,0,0.6);
+padding:50px;
+border-radius:20px;
+}
+
+h1{
+font-size:55px;
+margin-bottom:20px;
+}
+
+button{
+padding:15px 30px;
+background:#ff5722;
+border:none;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:red;
+}
+
+section{
+padding:60px;
+}
+
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.price{
+color:red;
+font-weight:bold;
+font-size:20px;
+margin:10px 0;
+}
+
+.action{
+background:#fff3cd;
+padding:20px;
+border-radius:20px;
+line-height:2;
+font-size:20px;
+}
+
+.cart{
+position:fixed;
+top:20px;
+right:20px;
+background:red;
+color:white;
+padding:20px;
+border-radius:20px;
+font-size:18px;
+}
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:50px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="cart">
+🛒 Savat:
+<span id="count">0</span><br>
+Jami:
+<span id="total">0</span> so'm
+</div>
+
+<header>
+<div class="overlay">
+<h1>Mazali taomlar — tez yetkazib berish!</h1>
+<button onclick="document.getElementById('menu').scrollIntoView()">
+Buyurtma berish
+</button>
+</div>
+</header>
+
+<section id="menu">
+
+<h2 class="title">🍔 Menyu</h2>
+
+<div class="container">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<div class="card-content">
+<h3>Classic Burger</h3>
+<p class="price">35 000 so'm</p>
+<button onclick="add(35000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550317138-10000687a72b">
+<div class="card-content">
+<h3>Cheese Burger</h3>
+<p class="price">40 000 so'm</p>
+<button onclick="add(40000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90">
+<div class="card-content">
+<h3>Double Burger</h3>
+<p class="price">55 000 so'm</p>
+<button onclick="add(55000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1513104890138-7c749659a591">
+<div class="card-content">
+<h3>Pepperoni</h3>
+<p class="price">70 000 so'm</p>
+<button onclick="add(70000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143">
+<div class="card-content">
+<h3>Margarita</h3>
+<p class="price">65 000 so'm</p>
+<button onclick="add(65000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1576107232684-1279f390859f">
+<div class="card-content">
+<h3>Fri kartoshka</h3>
+<p class="price">15 000 so'm</p>
+<button onclick="add(15000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1562967914-608f82629710">
+<div class="card-content">
+<h3>Nuggets</h3>
+<p class="price">20 000 so'm</p>
+<button onclick="add(20000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1629203851122-3726ecdf080e">
+<div class="card-content">
+<h3>Cola</h3>
+<p class="price">10 000 so'm</p>
+<button onclick="add(10000)">Savatga</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1624517452488-04869289c4ca">
+<div class="card-content">
+<h3>Fanta</h3>
+<p class="price">10 000 so'm</p>
+<button onclick="add(10000)">Savatga</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<section>
+
+<h2 class="title">🔥 Aksiyalar</h2>
+
+<div class="action">
+
+✅ 3 ta mahsulot olsangiz — 10% chegirma<br>
+
+✅ 2 ta burger + cola — 15% chegirma<br>
+
+✅ 100 000 so'mdan yuqori buyurtmaga — bepul yetkazib berish
+
+</div>
+
+</section>
+
+<footer>
+Fast Food © 2026
+</footer>
+
+<script>
+
+let count=0;
+let total=0;
+
+function add(price){
+
+count++;
+total+=price;
+
+if(count>=3){
+total=total*0.9;
+}
+
+document.getElementById("count").innerText=count;
+document.getElementById("total").innerText=
+Math.floor(total);
+
+}
+
+</script>
+
+</body>
+</html>
